@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffdb70"/>
+      <stop offset="100%" stop-color="#ffa500"/>
+    </linearGradient>
+  </defs>
+  <!-- Browser frame -->
+  <rect x="4" y="7" width="32" height="26" rx="3" fill="none" stroke="url(#g)" stroke-width="1.8"/>
+  <!-- Browser toolbar -->
+  <line x1="4" y1="14" x2="36" y2="14" stroke="url(#g)" stroke-width="1.5"/>
+  <!-- Traffic lights -->
+  <circle cx="9"  cy="10.5" r="1.5" fill="url(#g)" opacity="0.9"/>
+  <circle cx="14" cy="10.5" r="1.5" fill="url(#g)" opacity="0.6"/>
+  <circle cx="19" cy="10.5" r="1.5" fill="url(#g)" opacity="0.3"/>
+  <!-- Code brackets < /> -->
+  <polyline points="12,22 9,25 12,28" fill="none" stroke="url(#g)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="20,22 23,25 20,28" fill="none" stroke="url(#g)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Slash in middle -->
+  <line x1="15" y1="28" x2="17.5" y2="22" stroke="url(#g)" stroke-width="1.8" stroke-linecap="round" opacity="0.7"/>
+  <!-- Component box hint -->
+  <rect x="26" y="21" width="7" height="7" rx="1.5" fill="none" stroke="url(#g)" stroke-width="1.5" opacity="0.6"/>
+</svg>
