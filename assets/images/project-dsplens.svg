@@ -1,0 +1,262 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0d0f1a"/>
+      <stop offset="100%" style="stop-color:#11131f"/>
+    </linearGradient>
+    <linearGradient id="violet" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#a78bfa"/>
+      <stop offset="50%" style="stop-color:#6366f1"/>
+      <stop offset="100%" style="stop-color:#22d3ee"/>
+    </linearGradient>
+    <linearGradient id="cyan-glow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#22d3ee;stop-opacity:0.9"/>
+      <stop offset="100%" style="stop-color:#6366f1;stop-opacity:0.6"/>
+    </linearGradient>
+    <linearGradient id="green-glow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#34d399;stop-opacity:0.9"/>
+      <stop offset="100%" style="stop-color:#10b981;stop-opacity:0.5"/>
+    </linearGradient>
+    <linearGradient id="fft-bar" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#a78bfa"/>
+      <stop offset="100%" style="stop-color:#6366f1;stop-opacity:0.3"/>
+    </linearGradient>
+    <filter id="glow-cyan">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="glow-violet">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="panel-shadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#6366f1" flood-opacity="0.2"/>
+    </filter>
+    <clipPath id="panel1-clip"><rect x="20" y="70" width="240" height="150" rx="8"/></clipPath>
+    <clipPath id="panel2-clip"><rect x="280" y="70" width="240" height="150" rx="8"/></clipPath>
+    <clipPath id="panel3-clip"><rect x="540" y="70" width="240" height="150" rx="8"/></clipPath>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="500" fill="url(#bg)" rx="16"/>
+
+  <!-- Subtle grid -->
+  <g opacity="0.04" stroke="#a78bfa" stroke-width="0.5">
+    <line x1="0" y1="125" x2="800" y2="125"/>
+    <line x1="0" y1="250" x2="800" y2="250"/>
+    <line x1="0" y1="375" x2="800" y2="375"/>
+    <line x1="200" y1="0" x2="200" y2="500"/>
+    <line x1="400" y1="0" x2="400" y2="500"/>
+    <line x1="600" y1="0" x2="600" y2="500"/>
+  </g>
+
+  <!-- Top ambient glow -->
+  <ellipse cx="400" cy="-60" rx="400" ry="140" fill="#6366f1" opacity="0.07"/>
+
+  <!-- ── HEADER BAR ─────────────────────────────────────────── -->
+  <rect x="20" y="16" width="760" height="40" rx="10" fill="#161826" stroke="#ffffff0d" stroke-width="1"/>
+  <!-- Logo/Title -->
+  <text x="38" y="40" font-family="monospace" font-size="15" font-weight="700" fill="url(#violet)">DSPLens</text>
+  <text x="118" y="40" font-family="monospace" font-size="11" fill="#4b5563">— Interactive Signal Processing</text>
+  <!-- Nav pills -->
+  <rect x="480" y="24" width="80" height="22" rx="6" fill="#6366f122"/>
+  <text x="520" y="39" text-anchor="middle" font-family="monospace" font-size="10" fill="#a78bfa">Sampling</text>
+  <rect x="572" y="24" width="72" height="22" rx="6" fill="#22d3ee11"/>
+  <text x="608" y="39" text-anchor="middle" font-family="monospace" font-size="10" fill="#22d3ee">FFT</text>
+  <rect x="656" y="24" width="56" height="22" rx="6" fill="#ffffff08"/>
+  <text x="684" y="39" text-anchor="middle" font-family="monospace" font-size="10" fill="#6b7280">FIR</text>
+  <rect x="722" y="24" width="48" height="22" rx="6" fill="#ffffff08"/>
+  <text x="746" y="39" text-anchor="middle" font-family="monospace" font-size="10" fill="#6b7280">IIR</text>
+
+  <!-- ── PANEL 1 — SIGNAL SOURCE (Waveform) ─────────────────── -->
+  <rect x="20" y="66" width="240" height="160" rx="10" fill="#13152200" stroke="#ffffff0a" stroke-width="1" filter="url(#panel-shadow)"/>
+  <rect x="20" y="66" width="240" height="160" rx="10" fill="#131522"/>
+  <rect x="20" y="66" width="240" height="26" rx="10" fill="#1a1c2e"/>
+  <rect x="20" y="80" width="240" height="12" fill="#1a1c2e"/>
+  <text x="34" y="83" font-family="monospace" font-size="9" fill="#6b7280">SOURCE</text>
+  <text x="34" y="95" font-family="monospace" font-size="9" fill="#a78bfa">● Sine · 440 Hz · 1.0 V</text>
+  <!-- Sine wave -->
+  <g clip-path="url(#panel1-clip)" filter="url(#glow-cyan)">
+    <polyline points="
+      20,146 30,130 40,116 50,112 60,116 70,130 80,146 90,162 100,176 110,180 120,176 130,162 140,146 150,130 160,116 170,112 180,116 190,130 200,146 210,162 220,176 230,180 240,176 255,162 260,146"
+      fill="none" stroke="url(#cyan-glow)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- glow duplicate -->
+    <polyline points="
+      20,146 30,130 40,116 50,112 60,116 70,130 80,146 90,162 100,176 110,180 120,176 130,162 140,146 150,130 160,116 170,112 180,116 190,130 200,146 210,162 220,176 230,180 240,176 255,162 260,146"
+      fill="none" stroke="#22d3ee" stroke-width="1" stroke-linecap="round" opacity="0.4"/>
+  </g>
+  <!-- Axis -->
+  <line x1="20" y1="146" x2="260" y2="146" stroke="#ffffff0d" stroke-width="1"/>
+  <!-- Labels -->
+  <text x="34" y="218" font-family="monospace" font-size="8" fill="#4b5563">0</text>
+  <text x="100" y="218" font-family="monospace" font-size="8" fill="#4b5563">T/2</text>
+  <text x="215" y="218" font-family="monospace" font-size="8" fill="#4b5563">T</text>
+  <text x="34" y="228" font-family="monospace" font-size="8" fill="#374151">Time domain</text>
+
+  <!-- Arrow between panels -->
+  <text x="264" y="150" font-family="monospace" font-size="14" fill="#6366f1" opacity="0.7">→</text>
+
+  <!-- ── PANEL 2 — FFT SPECTRUM ──────────────────────────────── -->
+  <rect x="280" y="66" width="240" height="160" rx="10" fill="#131522" stroke="#ffffff0a" stroke-width="1"/>
+  <rect x="280" y="66" width="240" height="26" rx="10" fill="#1a1c2e"/>
+  <rect x="280" y="80" width="240" height="12" fill="#1a1c2e"/>
+  <text x="294" y="83" font-family="monospace" font-size="9" fill="#6b7280">SPECTRUM</text>
+  <text x="294" y="95" font-family="monospace" font-size="9" fill="#a78bfa">FFT · Hann window · 1024pt</text>
+
+  <!-- FFT Bars -->
+  <g clip-path="url(#panel2-clip)">
+    <!-- Noise floor -->
+    <rect x="284" y="200" width="232" height="2" fill="#22d3ee" opacity="0.05"/>
+    <!-- Bars — fundamental + harmonics -->
+    <rect x="292" y="188" width="6" height="4" rx="1" fill="#6366f1" opacity="0.3"/>
+    <rect x="302" y="182" width="6" height="10" rx="1" fill="#6366f1" opacity="0.4"/>
+    <rect x="312" y="170" width="6" height="22" rx="1" fill="#6366f1" opacity="0.5"/>
+    <rect x="322" y="148" width="6" height="44" rx="1" fill="url(#fft-bar)"/>
+    <!-- Main spike -->
+    <rect x="334" y="104" width="8" height="88" rx="2" fill="url(#violet)"/>
+    <rect x="334" y="104" width="8" height="88" rx="2" fill="url(#violet)" opacity="0.4"/>
+    <rect x="346" y="152" width="6" height="40" rx="1" fill="#6366f1" opacity="0.5"/>
+    <rect x="356" y="170" width="6" height="22" rx="1" fill="#6366f1" opacity="0.4"/>
+    <rect x="366" y="182" width="6" height="10" rx="1" fill="#6366f1" opacity="0.3"/>
+    <rect x="376" y="188" width="6" height="4"  rx="1" fill="#6366f1" opacity="0.2"/>
+    <!-- Noise -->
+    <rect x="390" y="196" width="4" height="2" rx="1" fill="#4b5563" opacity="0.5"/>
+    <rect x="400" y="194" width="4" height="4" rx="1" fill="#4b5563" opacity="0.4"/>
+    <rect x="410" y="197" width="4" height="1" rx="1" fill="#4b5563" opacity="0.4"/>
+    <rect x="420" y="195" width="4" height="3" rx="1" fill="#4b5563" opacity="0.4"/>
+    <rect x="432" y="198" width="4" height="1" rx="1" fill="#4b5563" opacity="0.3"/>
+    <rect x="445" y="196" width="4" height="2" rx="1" fill="#4b5563" opacity="0.3"/>
+    <rect x="460" y="194" width="4" height="4" rx="1" fill="#4b5563" opacity="0.3"/>
+    <rect x="478" y="197" width="4" height="1" rx="1" fill="#4b5563" opacity="0.2"/>
+    <rect x="495" y="196" width="4" height="2" rx="1" fill="#4b5563" opacity="0.2"/>
+    <!-- Frequency axis -->
+    <line x1="284" y1="200" x2="516" y2="200" stroke="#ffffff0d" stroke-width="1"/>
+    <!-- Freq marker -->
+    <line x1="338" y1="104" x2="338" y2="66" stroke="#a78bfa" stroke-width="1" stroke-dasharray="3,3" opacity="0.5"/>
+  </g>
+  <text x="294" y="218" font-family="monospace" font-size="8" fill="#4b5563">0 Hz</text>
+  <text x="360" y="218" font-family="monospace" font-size="8" fill="#a78bfa">440</text>
+  <text x="468" y="218" font-family="monospace" font-size="8" fill="#4b5563">22k</text>
+  <text x="294" y="228" font-family="monospace" font-size="8" fill="#374151">Frequency domain</text>
+
+  <!-- Arrow -->
+  <text x="524" y="150" font-family="monospace" font-size="14" fill="#6366f1" opacity="0.7">→</text>
+
+  <!-- ── PANEL 3 — POLE-ZERO PLOT ────────────────────────────── -->
+  <rect x="540" y="66" width="240" height="160" rx="10" fill="#131522" stroke="#ffffff0a" stroke-width="1"/>
+  <rect x="540" y="66" width="240" height="26" rx="10" fill="#1a1c2e"/>
+  <rect x="540" y="80" width="240" height="12" fill="#1a1c2e"/>
+  <text x="554" y="83" font-family="monospace" font-size="9" fill="#6b7280">POLE-ZERO</text>
+  <text x="554" y="95" font-family="monospace" font-size="9" fill="#a78bfa">IIR · Biquad · 2nd order</text>
+  <!-- Unit circle -->
+  <circle cx="660" cy="150" r="55" fill="none" stroke="#6366f1" stroke-width="1" opacity="0.25"/>
+  <!-- Axes -->
+  <line x1="600" y1="150" x2="720" y2="150" stroke="#ffffff0d" stroke-width="1"/>
+  <line x1="660" y1="95" x2="660" y2="210" stroke="#ffffff0d" stroke-width="1"/>
+  <!-- Zeros (circles) -->
+  <circle cx="640" cy="133" r="5" fill="none" stroke="url(#cyan-glow)" stroke-width="2" filter="url(#glow-cyan)"/>
+  <circle cx="640" cy="167" r="5" fill="none" stroke="url(#cyan-glow)" stroke-width="2"/>
+  <!-- Poles (crosses) -->
+  <g filter="url(#glow-violet)">
+    <line x1="622" y1="136" x2="632" y2="146" stroke="#f472b6" stroke-width="2" stroke-linecap="round"/>
+    <line x1="632" y1="136" x2="622" y2="146" stroke="#f472b6" stroke-width="2" stroke-linecap="round"/>
+    <line x1="622" y1="154" x2="632" y2="164" stroke="#f472b6" stroke-width="2" stroke-linecap="round"/>
+    <line x1="632" y1="154" x2="622" y2="164" stroke="#f472b6" stroke-width="2" stroke-linecap="round"/>
+  </g>
+  <!-- +1 / -1 labels -->
+  <text x="718" y="148" font-family="monospace" font-size="7" fill="#374151">+1</text>
+  <text x="596" y="148" font-family="monospace" font-size="7" fill="#374151">-1</text>
+  <!-- Legend -->
+  <circle cx="557" cy="213" r="4" fill="none" stroke="#22d3ee" stroke-width="1.5"/>
+  <text x="564" y="217" font-family="monospace" font-size="8" fill="#6b7280">zero</text>
+  <line x1="594" y1="211" x2="600" y2="217" stroke="#f472b6" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="600" y1="211" x2="594" y2="217" stroke="#f472b6" stroke-width="1.5" stroke-linecap="round"/>
+  <text x="604" y="217" font-family="monospace" font-size="8" fill="#6b7280">pole</text>
+
+  <!-- ── BOTTOM ROW — Explainer + Controls ──────────────────── -->
+
+  <!-- Explainer panel -->
+  <rect x="20" y="242" width="370" height="120" rx="10" fill="#131522" stroke="#ffffff0a" stroke-width="1"/>
+  <rect x="20" y="242" width="370" height="26" rx="10" fill="#1a1c2e"/>
+  <rect x="20" y="256" width="370" height="12" fill="#1a1c2e"/>
+  <text x="34" y="259" font-family="monospace" font-size="9" fill="#6b7280">LIVE EXPLANATION</text>
+  <rect x="30" y="276" width="350" height="12" rx="3" fill="#6366f111"/>
+  <rect x="30" y="276" width="200" height="12" rx="3" fill="#6366f122"/>
+  <rect x="30" y="295" width="350" height="10" rx="3" fill="#6366f111"/>
+  <rect x="30" y="295" width="280" height="10" rx="3" fill="#6366f118"/>
+  <rect x="30" y="312" width="350" height="10" rx="3" fill="#6366f111"/>
+  <rect x="30" y="312" width="150" height="10" rx="3" fill="#6366f118"/>
+  <!-- Actual text (small, decorative) -->
+  <text x="34" y="286" font-family="monospace" font-size="8" fill="#a78bfa">The Nyquist theorem states that to perfectly reconstruct</text>
+  <text x="34" y="300" font-family="monospace" font-size="8" fill="#94a3b8">a signal, your sample rate must be at least 2× the highest</text>
+  <text x="34" y="314" font-family="monospace" font-size="8" fill="#94a3b8">frequency present. Below this threshold, aliasing occurs…</text>
+  <text x="34" y="350" font-family="monospace" font-size="8" fill="#4b5563">Lesson 1/7 · Sampling &amp; Aliasing</text>
+
+  <!-- Controls panel -->
+  <rect x="406" y="242" width="374" height="120" rx="10" fill="#131522" stroke="#ffffff0a" stroke-width="1"/>
+  <rect x="406" y="242" width="374" height="26" rx="10" fill="#1a1c2e"/>
+  <rect x="406" y="256" width="374" height="12" fill="#1a1c2e"/>
+  <text x="420" y="259" font-family="monospace" font-size="9" fill="#6b7280">CONTROLS</text>
+
+  <!-- Slider 1: Frequency -->
+  <text x="420" y="280" font-family="monospace" font-size="8" fill="#9ca3af">Frequency</text>
+  <text x="710" y="280" font-family="monospace" font-size="8" fill="#a78bfa">440 Hz</text>
+  <rect x="420" y="284" width="280" height="4" rx="2" fill="#1e2130"/>
+  <rect x="420" y="284" width="140" height="4" rx="2" fill="url(#violet)"/>
+  <circle cx="560" cy="286" r="6" fill="#fff" stroke="#6366f1" stroke-width="2"/>
+
+  <!-- Slider 2: Amplitude -->
+  <text x="420" y="304" font-family="monospace" font-size="8" fill="#9ca3af">Amplitude</text>
+  <text x="710" y="304" font-family="monospace" font-size="8" fill="#22d3ee">1.0</text>
+  <rect x="420" y="308" width="280" height="4" rx="2" fill="#1e2130"/>
+  <rect x="420" y="308" width="224" height="4" rx="2" fill="url(#cyan-glow)"/>
+  <circle cx="644" cy="310" r="6" fill="#fff" stroke="#22d3ee" stroke-width="2"/>
+
+  <!-- Slider 3: Noise -->
+  <text x="420" y="328" font-family="monospace" font-size="8" fill="#9ca3af">Noise floor</text>
+  <text x="710" y="328" font-family="monospace" font-size="8" fill="#34d399">-60 dB</text>
+  <rect x="420" y="332" width="280" height="4" rx="2" fill="#1e2130"/>
+  <rect x="420" y="332" width="60" height="4" rx="2" fill="url(#green-glow)"/>
+  <circle cx="480" cy="334" r="6" fill="#fff" stroke="#34d399" stroke-width="2"/>
+
+  <!-- Play button -->
+  <rect x="420" y="346" width="76" height="26" rx="8" fill="url(#violet)" filter="url(#glow-violet)"/>
+  <text x="458" y="363" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#fff">▶  Play</text>
+
+  <!-- Reset button -->
+  <rect x="506" y="346" width="60" height="26" rx="8" fill="#1e2130" stroke="#6366f130" stroke-width="1"/>
+  <text x="536" y="363" text-anchor="middle" font-family="monospace" font-size="10" fill="#6b7280">Reset</text>
+
+  <!-- ── BOTTOM STATUS BAR ───────────────────────────────────── -->
+  <rect x="20" y="378" width="760" height="30" rx="8" fill="#0d0f1a" stroke="#ffffff06" stroke-width="1"/>
+  <circle cx="36" cy="393" r="4" fill="#34d399"/>
+  <text x="46" y="397" font-family="monospace" font-size="8" fill="#4b5563">All DSP runs in-browser · No backend · WebAudio API · Canvas plots · React 18 + Vite</text>
+  <text x="660" y="397" font-family="monospace" font-size="8" fill="#6366f1">MIT License</text>
+
+  <!-- ── TECH BADGES ─────────────────────────────────────────── -->
+  <rect x="20" y="424" width="760" height="58" rx="10" fill="#131522" stroke="#ffffff0a" stroke-width="1"/>
+  <text x="36" y="448" font-family="monospace" font-size="8" fill="#6b7280">STACK</text>
+
+  <!-- React badge -->
+  <rect x="36" y="454" width="62" height="20" rx="6" fill="#61dafb18" stroke="#61dafb33" stroke-width="1"/>
+  <text x="67" y="467" text-anchor="middle" font-family="monospace" font-size="9" fill="#61dafb">React 18</text>
+  <!-- Vite badge -->
+  <rect x="106" y="454" width="46" height="20" rx="6" fill="#a78bfa18" stroke="#a78bfa33" stroke-width="1"/>
+  <text x="129" y="467" text-anchor="middle" font-family="monospace" font-size="9" fill="#a78bfa">Vite 5</text>
+  <!-- Canvas badge -->
+  <rect x="160" y="454" width="68" height="20" rx="6" fill="#22d3ee18" stroke="#22d3ee33" stroke-width="1"/>
+  <text x="194" y="467" text-anchor="middle" font-family="monospace" font-size="9" fill="#22d3ee">Canvas API</text>
+  <!-- WebAudio badge -->
+  <rect x="236" y="454" width="82" height="20" rx="6" fill="#f472b618" stroke="#f472b633" stroke-width="1"/>
+  <text x="277" y="467" text-anchor="middle" font-family="monospace" font-size="9" fill="#f472b6">WebAudio API</text>
+  <!-- Tailwind badge -->
+  <rect x="326" y="454" width="68" height="20" rx="6" fill="#38bdf818" stroke="#38bdf833" stroke-width="1"/>
+  <text x="360" y="467" text-anchor="middle" font-family="monospace" font-size="9" fill="#38bdf8">Tailwind CSS</text>
+  <!-- FFT badge -->
+  <rect x="402" y="454" width="62" height="20" rx="6" fill="#34d39918" stroke="#34d39933" stroke-width="1"/>
+  <text x="433" y="467" text-anchor="middle" font-family="monospace" font-size="9" fill="#34d399">Pure-JS FFT</text>
+
+  <!-- Open Source tag -->
+  <rect x="660" y="454" width="100" height="20" rx="6" fill="#6366f118" stroke="#6366f133" stroke-width="1"/>
+  <text x="710" y="467" text-anchor="middle" font-family="monospace" font-size="9" fill="#a78bfa">⭐ Open Source</text>
+</svg>
